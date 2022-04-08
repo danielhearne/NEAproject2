@@ -3,9 +3,6 @@
 //Create session
 session_start();
 
-//prevents the undefined array key ERROR
-//error_reporting(0);
-
 //Require the connection
 require_once 'connection.php';
 
@@ -27,12 +24,11 @@ if(isset($_POST["submit"])){
 
     if($count == 1){
         $_SESSION['username'] = $_POST['username'];
-        //echo "Logged in with <br> username: ".$username."<br> password: ".$password;
-        header("Location:/website%204/user/userIndex.php");
+        echo "Logged in with <br> username: ".$username."<br> password: ".$password;
+        header("Location: http://localhost\NEAproject2\index.html");
 
     //If the user's login information doesn't work, they'll be given a "can't login" message/error.
     } else {
-        //echo "Can't login with <br> username: ".$username."<br> password: ".$password;
-        header("Location:/website%204/errorPages/cantLoginUser.html");
+        echo "Can't login with <br> username: ".$username."<br> password: ".$password;
     }
 }

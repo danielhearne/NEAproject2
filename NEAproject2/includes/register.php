@@ -9,7 +9,6 @@ if(isset($_POST["submit"])){
     //from the register form in ./register.html
     $username = $_POST['username'];
     $password = $_POST['password'];
-    echo "2";
 
     //Selecting all the username fields from the database
     //to then check if the user is trying to register using any
@@ -25,13 +24,7 @@ if(isset($_POST["submit"])){
         if(mysqli_num_rows($result_username) > 0){
             //Send the user to a page, saying that "there is already a user with 
             //that username"
-            header("Location:../errorPages/usernameTaken.html");
-        }
-
-        //check if the email and username are already in use 
-        //(> 0 means that there is already a user with that email username)
-        if((mysqli_num_rows($result_username) > 0) && (mysqli_num_rows($result_email) > 0)){
-            header("Location:../errorPages/usernameAndEmailTaken.html");
+            echo "Username Taken";
         }
 
         //check if email and username aren't already in use 
@@ -43,7 +36,8 @@ if(isset($_POST["submit"])){
                 VALUES ('$username','$password')";
 
             if(mysqli_query($conn, $sql)){
-                header("Location:../login.html");
+                //Direct to login page
+                header("Location: http://localhost/NEAproject2/login.html");
             } else {
                 echo "ERROR: Register data wasn't stored in the database table";
             }
